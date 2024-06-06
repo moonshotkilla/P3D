@@ -1,0 +1,327 @@
+diff -Naur poker3d-1.1.36.osg/dmctp/dmctp_sound/dmctp_sound.cpp poker3d-1.1.36/dmctp/dmctp_sound/dmctp_sound.cpp
+--- poker3d-1.1.36.osg/dmctp/dmctp_sound/dmctp_sound.cpp	2006-09-08 17:52:47.000000000 +0200
++++ poker3d-1.1.36/dmctp/dmctp_sound/dmctp_sound.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -26,6 +26,7 @@
+  *
+  */
+ 
++#include <cstdlib>
+ #include <string>
+ #include <iostream>
+ #include <vector>
+diff -Naur poker3d-1.1.36.osg/include/maf/vision.h poker3d-1.1.36/include/maf/vision.h
+--- poker3d-1.1.36.osg/include/maf/vision.h	2006-03-21 11:56:16.000000000 +0100
++++ poker3d-1.1.36/include/maf/vision.h	2009-02-15 08:40:49.000000000 +0100
+@@ -32,6 +32,7 @@
+ #ifndef MAF_USE_VS_PCH
+ #include <list>
+ #include <osg/NodeVisitor>
++#include <osg/BoundingBox>
+ #include <maf/mafexport.h>
+ #endif
+ 
+diff -Naur poker3d-1.1.36.osg/osgplugins/ddsrle/src/ReaderWriterDDSRLE.cpp poker3d-1.1.36/osgplugins/ddsrle/src/ReaderWriterDDSRLE.cpp
+--- poker3d-1.1.36.osg/osgplugins/ddsrle/src/ReaderWriterDDSRLE.cpp	2006-11-21 14:51:17.000000000 +0100
++++ poker3d-1.1.36/osgplugins/ddsrle/src/ReaderWriterDDSRLE.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -28,8 +28,9 @@
+ #include <osgDB/FileNameUtils>
+ #include <osgDB/FileUtils>
+ 
+-#include <stdio.h>
++#include <cstdio>
+ #include <sstream>
++#include <cstring>
+ 
+ #ifdef WIN32
+  #include <windows.h>
+diff -Naur poker3d-1.1.36.osg/osgplugins/ddsrle/src/rle.cpp poker3d-1.1.36/osgplugins/ddsrle/src/rle.cpp
+--- poker3d-1.1.36.osg/osgplugins/ddsrle/src/rle.cpp	2006-11-21 14:51:17.000000000 +0100
++++ poker3d-1.1.36/osgplugins/ddsrle/src/rle.cpp	2009-02-15 08:46:45.000000000 +0100
+@@ -26,6 +26,8 @@
+  *
+  */
+ 
++#include <cstdlib>
++#include <limits.h>
+ #include <memory.h>
+ #include <vector>
+ 
+diff -Naur poker3d-1.1.36.osg/osgplugins/gif/src/ReaderWriterGIF.cpp poker3d-1.1.36/osgplugins/gif/src/ReaderWriterGIF.cpp
+--- poker3d-1.1.36.osg/osgplugins/gif/src/ReaderWriterGIF.cpp	2005-06-20 17:44:16.000000000 +0200
++++ poker3d-1.1.36/osgplugins/gif/src/ReaderWriterGIF.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -46,9 +46,9 @@
+   GIF loader, using libungif
+   Based, in part, on source code found in libungif, gif2rgb.c
+ */
+-#include <stdlib.h>
+-#include <string.h>
+-#include <stdio.h>
++#include <cstdlib>
++#include <cstring>
++#include <cstdio>
+ 
+ extern  "C"
+ {
+diff -Naur poker3d-1.1.36.osg/osgplugins/hdr/src/hdrloader.cpp poker3d-1.1.36/osgplugins/hdr/src/hdrloader.cpp
+--- poker3d-1.1.36.osg/osgplugins/hdr/src/hdrloader.cpp	2006-03-21 11:56:16.000000000 +0100
++++ poker3d-1.1.36/osgplugins/hdr/src/hdrloader.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -30,8 +30,8 @@
+ 
+ #include <math.h>
+ #include <memory.h>
+-#include <stdio.h>
+-#include <string.h>
++#include <cstdio>
++#include <cstring>
+ 
+ typedef unsigned char RGBE[4];
+ #define R			0
+diff -Naur poker3d-1.1.36.osg/osgplugins/hdr/src/ReaderHDR.cpp poker3d-1.1.36/osgplugins/hdr/src/ReaderHDR.cpp
+--- poker3d-1.1.36.osg/osgplugins/hdr/src/ReaderHDR.cpp	2006-03-21 11:56:16.000000000 +0100
++++ poker3d-1.1.36/osgplugins/hdr/src/ReaderHDR.cpp	2009-02-15 08:46:45.000000000 +0100
+@@ -35,10 +35,10 @@
+ #include <osgDB/FileNameUtils>
+ #include <osgDB/FileUtils>
+ 
+-#include <stdio.h>
++#include <cstdio>
+ #include <assert.h>
+-#include <string.h>
+-#include <stdlib.h>
++#include <cstring>
++#include <cstdlib>
+ #include <sstream>
+ 
+ #include "hdrloader.h"
+diff -Naur poker3d-1.1.36.osg/src/maf/formatamount.cpp poker3d-1.1.36/src/maf/formatamount.cpp
+--- poker3d-1.1.36.osg/src/maf/formatamount.cpp	2006-08-23 15:31:20.000000000 +0200
++++ poker3d-1.1.36/src/maf/formatamount.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -32,7 +32,7 @@
+ 
+ #ifndef MAF_USE_VS_PCH
+ 
+-#include <stdio.h>
++#include <cstdio>
+ #include <string>
+ 
+ #ifdef WIN32
+diff -Naur poker3d-1.1.36.osg/src/maf/renderbin.cpp poker3d-1.1.36/src/maf/renderbin.cpp
+--- poker3d-1.1.36.osg/src/maf/renderbin.cpp	2006-10-23 18:04:07.000000000 +0200
++++ poker3d-1.1.36/src/maf/renderbin.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -26,6 +26,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include <maf/StdAfx.h>
+ 
+ #ifndef MAF_USE_VS_PCH
+diff -Naur poker3d-1.1.36.osg/src/maf/url.cpp poker3d-1.1.36/src/maf/url.cpp
+--- poker3d-1.1.36.osg/src/maf/url.cpp	2006-06-30 17:28:00.000000000 +0200
++++ poker3d-1.1.36/src/maf/url.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -47,7 +47,7 @@
+ 
+ #include <maf/url.h>
+ #include <iostream>
+-#include <stdio.h>
++#include <cstdio>
+ 
+ #endif
+ 
+diff -Naur poker3d-1.1.36.osg/src/maf/wnc_auth.cpp poker3d-1.1.36/src/maf/wnc_auth.cpp
+--- poker3d-1.1.36.osg/src/maf/wnc_auth.cpp	2006-06-30 17:28:00.000000000 +0200
++++ poker3d-1.1.36/src/maf/wnc_auth.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -43,9 +43,9 @@
+ #endif
+ 
+ #ifndef MAF_USE_VS_PCH
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <time.h>
+diff -Naur poker3d-1.1.36.osg/src/maf/wnc_conversion.cpp poker3d-1.1.36/src/maf/wnc_conversion.cpp
+--- poker3d-1.1.36.osg/src/maf/wnc_conversion.cpp	2006-06-30 17:28:00.000000000 +0200
++++ poker3d-1.1.36/src/maf/wnc_conversion.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -40,7 +40,7 @@
+ 
+ #ifndef MAF_USE_VS_PCH
+ 
+-#include <string.h>
++#include <cstring>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+diff -Naur poker3d-1.1.36.osg/src/maf/wnc_image.cpp poker3d-1.1.36/src/maf/wnc_image.cpp
+--- poker3d-1.1.36.osg/src/maf/wnc_image.cpp	2006-06-30 17:28:00.000000000 +0200
++++ poker3d-1.1.36/src/maf/wnc_image.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -36,6 +36,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include <maf/StdAfx.h>
+ 
+ #ifndef MAF_USE_VS_PCH
+@@ -47,8 +48,8 @@
+ #include <maf/wnc_image.h>
+ 
+ #include <math.h>
+-#include <stdlib.h>
+-#include <stdio.h>
++#include <cstdlib>
++#include <cstdio>
+ #include <string>
+ 
+ #endif
+diff -Naur poker3d-1.1.36.osg/src/maf/wnc_source.cpp poker3d-1.1.36/src/maf/wnc_source.cpp
+--- poker3d-1.1.36.osg/src/maf/wnc_source.cpp	2006-09-08 17:52:47.000000000 +0200
++++ poker3d-1.1.36/src/maf/wnc_source.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -95,7 +95,7 @@
+ #include <sys/ioctl.h>
+ #endif
+ 
+-#include <stdio.h>
++#include <cstdio>
+ #include <math.h>
+ 
+ #include <stdexcept>
+diff -Naur poker3d-1.1.36.osg/src/maf/wnc_tcp.cpp poker3d-1.1.36/src/maf/wnc_tcp.cpp
+--- poker3d-1.1.36.osg/src/maf/wnc_tcp.cpp	2006-06-30 17:28:00.000000000 +0200
++++ poker3d-1.1.36/src/maf/wnc_tcp.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -109,9 +109,9 @@
+ #include <sys/errno.h>
+ #endif
+ 
+-#include <string.h>
+-#include <stdio.h>
+-#include <stdlib.h>
++#include <cstring>
++#include <cstdio>
++#include <cstdlib>
+ #include <ctype.h>
+ 
+ #include <errno.h>
+diff -Naur poker3d-1.1.36.osg/src/ugame/BetSlider.cpp poker3d-1.1.36/src/ugame/BetSlider.cpp
+--- poker3d-1.1.36.osg/src/ugame/BetSlider.cpp	2006-08-18 20:08:35.000000000 +0200
++++ poker3d-1.1.36/src/ugame/BetSlider.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -35,6 +35,7 @@
+ #ifndef UGAME_USE_VS_PCH
+ 
+ #include <iostream>
++#include <cstring>
+ 
+ #include <libxml/xmlreader.h>
+ 
+diff -Naur poker3d-1.1.36.osg/src/ugame/osgSprite.cpp poker3d-1.1.36/src/ugame/osgSprite.cpp
+--- poker3d-1.1.36.osg/src/ugame/osgSprite.cpp	2006-09-26 17:42:45.000000000 +0200
++++ poker3d-1.1.36/src/ugame/osgSprite.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -35,6 +35,7 @@
+ 
+ #include <vector>
+ #include <string>
++#include <cstring>
+ #include <sstream>
+ #include <iomanip>
+ #include <iostream>
+diff -Naur poker3d-1.1.36.osg/src/ugame/Stacks.cpp poker3d-1.1.36/src/ugame/Stacks.cpp
+--- poker3d-1.1.36.osg/src/ugame/Stacks.cpp	2007-09-09 02:03:12.000000000 +0200
++++ poker3d-1.1.36/src/ugame/Stacks.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -34,6 +34,7 @@
+ 
+ #ifndef UGAME_USE_VS_PCH
+ #include <iostream>
++#include <cstring>
+ 
+ #include <libxml/xmlreader.h>
+ #include <libxml/xpath.h>
+diff -Naur poker3d-1.1.36.osg/src/vserial/dataio.cpp poker3d-1.1.36/src/vserial/dataio.cpp
+--- poker3d-1.1.36.osg/src/vserial/dataio.cpp	2006-09-08 17:14:50.000000000 +0200
++++ poker3d-1.1.36/src/vserial/dataio.cpp	2009-02-15 12:23:33.000000000 +0100
+@@ -36,6 +36,7 @@
+ #include <assert.h>
+ #include <math.h>
+ #include <cstring>
++#include <cstdio>
+ #include <cerrno>
+ #endif
+ 
+diff -Naur poker3d-1.1.36.osg/src/vserial/meshlayer.cpp poker3d-1.1.36/src/vserial/meshlayer.cpp
+--- poker3d-1.1.36.osg/src/vserial/meshlayer.cpp	2007-01-20 16:07:55.000000000 +0100
++++ poker3d-1.1.36/src/vserial/meshlayer.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -26,6 +26,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include <vserial/stdafx.h>
+ 
+ #ifndef UNDERWARE_VSERIAL_USE_PCH
+diff -Naur poker3d-1.1.36.osg/src/vserial/meshprimitivespacket.cpp poker3d-1.1.36/src/vserial/meshprimitivespacket.cpp
+--- poker3d-1.1.36.osg/src/vserial/meshprimitivespacket.cpp	2006-12-01 19:51:19.000000000 +0100
++++ poker3d-1.1.36/src/vserial/meshprimitivespacket.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -32,7 +32,7 @@
+ #ifndef UNDERWARE_VSERIAL_USE_PCH
+ #include <float.h>
+ #include <memory.h>
+-#include <stdio.h>
++#include <cstdio>
+ 
+ #include <vserial/vserial.h>
+ #include <vserial/meshprimitivespacket.h>
+diff -Naur poker3d-1.1.36.osg/src/vserial/mesh_saver.cpp poker3d-1.1.36/src/vserial/mesh_saver.cpp
+--- poker3d-1.1.36.osg/src/vserial/mesh_saver.cpp	2006-12-05 17:02:58.000000000 +0100
++++ poker3d-1.1.36/src/vserial/mesh_saver.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -26,6 +26,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include <vserial/stdafx.h>
+ 
+ #ifndef UNDERWARE_VSERIAL_USE_PCH
+diff -Naur poker3d-1.1.36.osg/src/vserial/rle.cpp poker3d-1.1.36/src/vserial/rle.cpp
+--- poker3d-1.1.36.osg/src/vserial/rle.cpp	2006-05-23 14:49:32.000000000 +0200
++++ poker3d-1.1.36/src/vserial/rle.cpp	2009-02-15 08:45:39.000000000 +0100
+@@ -26,6 +26,7 @@
+  *
+  */
+ 
++#include <cstdlib>
+ #include <vserial/stdafx.h>
+ 
+ #ifndef UNDERWARE_VSERIAL_USE_PCH
+diff -Naur poker3d-1.1.36.osg/src/vserial/scene_saver.cpp poker3d-1.1.36/src/vserial/scene_saver.cpp
+--- poker3d-1.1.36.osg/src/vserial/scene_saver.cpp	2007-01-20 16:07:55.000000000 +0100
++++ poker3d-1.1.36/src/vserial/scene_saver.cpp	2009-02-15 08:40:49.000000000 +0100
+@@ -26,6 +26,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include <vserial/stdafx.h>
+ 
+ #ifndef UNDERWARE_VSERIAL_USE_PCH
+diff -Naur poker3d-1.1.36.osg/src/vserial/string.cpp poker3d-1.1.36/src/vserial/string.cpp
+--- poker3d-1.1.36.osg/src/vserial/string.cpp	2007-01-20 16:07:55.000000000 +0100
++++ poker3d-1.1.36/src/vserial/string.cpp	2009-02-15 12:38:29.000000000 +0100
+@@ -26,6 +26,7 @@
+  *
+  */
+ 
++#include <cstring>
+ #include <vserial/stdafx.h>
+ 
+ #ifndef UNDERWARE_VSERIAL_USE_PCH
+@@ -33,6 +34,7 @@
+ 
+ #include <vserial/vserial.h>
+ #include <vserial/string.h>
++#include <cstdio>
+ #endif
+ 
+ ENTER_NAMESPACE_UNDERWARE

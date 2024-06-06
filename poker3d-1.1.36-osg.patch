@@ -1,0 +1,15 @@
+--- src/maf/MultipleAnimationPathCallback.cpp~	2007-11-15 15:58:29.000000000 -0800
++++ src/maf/MultipleAnimationPathCallback.cpp	2007-11-15 15:58:39.000000000 -0800
+@@ -26,12 +26,6 @@
+ 
+ using namespace osg;
+ 
+-#if OSG_VERSION_RELEASE != 9 && OSG_VERSION_MAJOR != 1
+-#define getRotation() _rotation
+-#define getScale() _scale
+-#define getPosition() _position
+-#endif // OSG_VERSION_RELEASE != 9 && OSG_VERSION_MAJOR != 1
+-
+ class MultipleAnimationPathCallbackVisitor : public osg::NodeVisitor
+ {
+     public:

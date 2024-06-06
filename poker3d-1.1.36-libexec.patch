@@ -1,0 +1,11 @@
+--- configure.ac~	2007-10-27 19:26:39.000000000 -0700
++++ configure.ac	2007-10-27 19:48:50.000000000 -0700
+@@ -184,7 +184,7 @@
+ # Check for Xvfb
+ AC_PATH_PROG(XFVB, Xvfb)
+ 
+-versionlibdir=$libdir/$PACKAGE
++versionlibdir=$libexecdir/$PACKAGE
+ AC_SUBST(versionlibdir, [$versionlibdir])
+ AC_SUBST(pythonpath, [$pythonpath])
+ 

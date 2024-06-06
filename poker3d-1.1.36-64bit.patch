@@ -1,0 +1,14 @@
+--- src/maf/packets.cpp~	2007-10-21 15:55:54.000000000 -0700
++++ src/maf/packets.cpp	2007-10-21 15:57:17.000000000 -0700
+@@ -76,7 +76,11 @@
+ 
+ void MAFPacketsModule::LoadTypes(void)
+ {
++#if PY_VERSION_HEX < 0x02050000
+   int pos = 0;
++#else // PY_VERSION_HEX < 0x02050000
++  Py_ssize_t pos = 0;
++#endif // PY_VERSION_HEX < 0x02050000
+   PyObject* key;
+   PyObject* value;
+   PyObject* dictionary = PyModule_GetDict(mModule);
